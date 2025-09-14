@@ -26,7 +26,7 @@ def get_tenant_access_token(app_id, app_secret):
     else:
         raise Exception(f"获取访问令牌失败: {result.get('msg')}")
 
-def get_bitable_datas(tenant_access_token, app_token, table_id, page_token='', page_size=100):
+def get_bitable_datas(tenant_access_token, app_token, table_id, page_token='', page_size=500):
     """获取多维表格数据（支持分页）"""
     # 使用URL参数而不是请求体传递分页参数
     url = f"https://open.feishu.cn/open-apis/bitable/v1/apps/{app_token}/tables/{table_id}/records/search?page_size={page_size}"
@@ -271,4 +271,5 @@ st.sidebar.warning("""
 # 添加重置按钮
 if st.sidebar.button("重置查询"):
     st.session_state.all_member_data = None
+
     st.experimental_rerun()
