@@ -78,7 +78,7 @@ def get_all_records(tenant_access_token, app_token, table_id):
         
         # 添加短暂延迟避免API限制
         import time
-        time.sleep(0.1)
+        time.sleep(0.05)
         
         # 安全限制：最多获取25页数据（2500条记录）
         if page_count >= 25:
@@ -273,3 +273,4 @@ if st.sidebar.button("重置查询"):
     st.session_state.all_member_data = None
 
     st.experimental_rerun()
+
